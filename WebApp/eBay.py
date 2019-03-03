@@ -1,6 +1,9 @@
 from urllib.request import urlopen
 import json
 import requests
+from io import BytesIO
+import base64
+import urllib
 
 import matplotlib
 from datascience import *
@@ -61,28 +64,31 @@ def calculate(search_term, category, condition):
     ###########################################################################
     dataTable = pd.concat([pd.Series(listings), pd.Series(prices), pd.Series(offer), pd.Series(BIN)], axis=1)
     dataTable.columns = ['Name', 'Price', 'Best Offer Enabled', "Buy It Now"]
-    dataTable
 
-    plt.figure(figsize=(8, 6))
-    lowLimit = np.percentile(np.array(dataTable['Price']), 2.5)
-    highLimit = np.percentile(np.array(dataTable['Price']), 97.5)
-    sns.distplot(dataTable['Price'],rug=True, norm_hist=True, color='teal')
-    plt.ylabel('Proportion of Sales')
-    plt.xlim(lowLimit, highLimit)
-    plt.title('Price Distribution for ' + search_term + ' Sold');
-    plt.savefig('dist.png')
+    try:
+        plt.figure(figsize=(8, 6))
+        lowLimit = np.percentile(np.array(dataTable['Price']), 2.5)
+        highLimit = np.percentile(np.array(dataTable['Price']), 97.5)
+        sns.distplot(dataTable['Price'],rug=True, norm_hist=True, color='teal')
+        plt.ylabel('Proportion of Sales')
+        plt.xlim(lowLimit, highLimit)
+        plt.title('Price Distribution for ' + search_term + ' Sold');
+        plt.savefig('dist.png')
 
-    stats = dataTable.describe()['Price']
-    summary = ["$" + str(round(x, 2)) for x in [stats[1], stats[2], stats[4], stats[5], stats[6]]]
+        stats = dataTable.describe()['Price']
+        summary = ["$" + str(round(x, 2)) for x in [stats[1], stats[2], stats[4], stats[5], stats[6]]]
 
-    from io import BytesIO
-    figfile = BytesIO()
-    plt.savefig(figfile, format='png')
-    figfile.seek(0)  # rewind to beginning of file
-    import base64
-    graph = base64.b64encode(open('dist.png', 'rb').read()).decode('utf-8').replace('\n', '')
-    ###########################################################################
-    "*** RETURN DICT OF IMPORTANT INFO ***"
-    ###########################################################################
-    low, high = round(min(stats[1], stats[5]), 2), round(max(stats[1], stats[5]), 2)
-    return {'Mean':summary[0], 'SD':summary[1], '25%':summary[2], '50%':summary[3], '75%':summary[4], 'Min':"$"+str(low), 'Max':"$"+str(high), 'Graph':graph}
+        figfile = BytesIO()
+        plt.savefig(figfile, format='png')
+        figfile.seek(0)  # rewind to beginning of file
+        graph = base64.b64encode(open('dist.png', 'rb').read()).decode('utf-8').replace('\n', '')
+        ###########################################################################
+        "*** RETURN DICT OF IMPORTANT INFO ***"
+        ###########################################################################
+        low, high = round(min(stats[1], stats[5]), 2), round(max(stats[1], stats[5]), 2)
+        return {'Mean':summary[0], 'SD':summary[1], '25%':summary[2], '50%':summary[3], '75%':summary[4], 'Min':"$"+str(low), 'Max':"$"+str(high), 'Graph':graph}
+    except:
+        urllib.request.urlretrieve("https://kuwaitlifestyleblog.files.wordpress.com/2016/07/windows_bug6-100581894-primary-idge.jpg?w=608&h=405", "error.png")
+        error = base64.b64encode(open('error.png', 'rb').read()).decode('utf-8').replace('\n', '')
+        msg = 'No Matches for Search'
+        return {'Mean':msg, 'SD':msg, '25%':msg, '50%':msg, '75%':msg, 'Min':msg, 'Max':msg, 'Graph':error}
