@@ -34,13 +34,13 @@ def calculate(search_term, category, condition):
     "*** API ***"
     ##########################################################################
     key = 'JustinCh-SmartPri-PRD-416e5579d-aa266db1'
+    keywords = search_term.replace(' ', '+')
     category = findID(category)
     condition = findCondition(condition)
-    url = ("http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findCompletedItems&SERVICE-VERSION=1.7.0&SECURITY-APPNAME=JustinCh-SmartPri-PRD-416e5579d-aa266db1&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" + search_term + "&categoryId=" + str(category) + "&itemFilter(0).name=Condition&itemFilter(0).value=" + str(condition) + "&itemFilter(1).name=FreeShippingOnly&itemFilter(1).value=false&itemFilter(2).name=SoldItemsOnly&itemFilter(2).value=true")
+    url = ("http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findCompletedItems&SERVICE-VERSION=1.7.0&SECURITY-APPNAME=JustinCh-SmartPri-PRD-416e5579d-aa266db1&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" + keywords + "&categoryId=" + str(category) + "&itemFilter(0).name=Condition&itemFilter(0).value=" + str(condition) + "&itemFilter(1).name=FreeShippingOnly&itemFilter(1).value=false&itemFilter(2).name=SoldItemsOnly&itemFilter(2).value=true")
 
     ###########################################################################
     "*** CLEANS UP .JSON TO PANDAS DATAFRAME ***"
-    ###########################################################################
     apiResult = requests.get(url)
     listings, prices, offer, BIN = [], [], [], []
     parsed = apiResult.json()
