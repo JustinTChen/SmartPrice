@@ -75,9 +75,14 @@ def calculate(search_term, category, condition):
 
     summary = dataTable.describe()['Price']
 
-    uploadFile('dist.png', 'dist.png', 'image/png')
+    from io import BytesIO
+    figfile = BytesIO()
+    plt.savefig(figfile, format='png')
+    figfile.seek(0)  # rewind to beginning of file
+    import base64
+    figdata_png = base64.b64encode(figfile.getvalue())
     ###########################################################################
     "*** RETURN DICT OF IMPORTANT INFO ***"
     ###########################################################################
     low, high = min(summary[1], summary[5]), max(summary[1], summary[5])
-    return {'Mean':summary[1], 'SD':summary[2], '25%':summary[4], '50%':summary[5], '75%':summary[6], 'Min':low, 'Max':high 'Graph':1}
+    return {'Mean':summary[1], 'SD':summary[2], '25%':summary[4], '50%':summary[5], '75%':summary[6], 'Min':low, 'Max':high 'Graph':figdata_png}
