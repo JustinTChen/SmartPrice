@@ -16,12 +16,11 @@
 	<form method="post" action="something.php" name="myForm">
 	<div>
 		<label>Item:</label>
-		<input type = "text" name="Item" id = "Item" />
+		<input type = "text" name="Item" id = "item" />
 	</div>
 	<br />
 	<div>
-		<label>Category:</label>
-		<select>name="Category" id="category">
+	<select name="Category" id="category">
 			<option value="Antiques">Antiques</option>
 			<option value="Art">Art</option>
 			<option value="Baby">Baby</option>
@@ -56,15 +55,14 @@
 			<option value="Toys & Hobbies">Toys & Hobbies</option>
 			<option value="Travel">Travel</option>
 			<option value="Video Games & Consoles">Video Games & Consoles</option>
-		</select>
+</select>
 	</div>
 	<br />
 	<div>
-		<label>Condition:</label>
-		<select>name="Condition" id="condition">
-			<option value="New">New</option>
-			<option value="Used">Used</option>
-		</select>
+	<select name="Condition" id="condition">
+  	<option value="New">New</option>
+		<option value="Used">Used</option>
+	</select>
 	</div>
 	<br />
 	<input class = "button" id="Price My Item!" type="button" value="Price My Item!" onclick="findBestPrice();" />

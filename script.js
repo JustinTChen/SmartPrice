@@ -1,5 +1,15 @@
 "Use strict";
 
 function findBestPrice() {
-	alert("This works");
+
+	var item = document.getElementById('item').value;
+
+	var category = document.getElementById('category').value;
+
+	var condition = document.getElementById('condition').value;
+
+	alert(item);
+	alert(category);
+	alert(condition);
+
 }
