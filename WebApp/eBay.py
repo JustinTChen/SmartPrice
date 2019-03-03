@@ -72,7 +72,8 @@ def calculate(search_term, category, condition):
     plt.title('Price Distribution for ' + search_term + ' Sold');
     plt.savefig('dist.png')
 
-    summary = dataTable.describe()['Price']
+    stats = dataTable.describe()['Price']
+    summary = ["$" + str(round(x, 2)) for x in [stats[1], stats[2], stats[4], stats[5], stats[6]]]
 
     from io import BytesIO
     figfile = BytesIO()
@@ -83,5 +84,5 @@ def calculate(search_term, category, condition):
     ###########################################################################
     "*** RETURN DICT OF IMPORTANT INFO ***"
     ###########################################################################
-    low, high = min(summary[1], summary[5]), max(summary[1], summary[5])
-    return {'Mean':summary[1], 'SD':summary[2], '25%':summary[4], '50%':summary[5], '75%':summary[6], 'Min':low, 'Max':high, 'Graph':graph}
+    low, high = round(min(stats[1], stats[5]), 2), round(max(stats[1], stats[5]), 2)
+    return {'Mean':summary[0], 'SD':summary[1], '25%':summary[2], '50%':summary[3], '75%':summary[4], 'Min':"$"+str(low), 'Max':"$"+str(high), 'Graph':graph}
