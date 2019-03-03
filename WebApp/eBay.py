@@ -91,4 +91,4 @@ def calculate(search_term, category, condition):
         urllib.request.urlretrieve("https://kuwaitlifestyleblog.files.wordpress.com/2016/07/windows_bug6-100581894-primary-idge.jpg?w=608&h=405", "error.png")
         error = base64.b64encode(open('error.png', 'rb').read()).decode('utf-8').replace('\n', '')
         msg = 'No Matches for Search'
-        return {'Mean':msg, 'SD':msg, '25%':msg, '50%':msg, '75%':msg, 'Min':msg, 'Max':msg, 'Graph':error}
+        return {'Mean':msg, 'SD':msg, '25%':msg, '50%':msg, '75%':msg, 'Min':'N/A', 'Max':'N/A', 'Graph':error}
