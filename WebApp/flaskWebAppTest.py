@@ -9,4 +9,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return render_template('test.html', Graph=graph)
+    return render_template('test.html')

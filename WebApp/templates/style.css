@@ -1,0 +1,38 @@
+body{
+	text-align: center;
+	font-family: arial;
+	font-size: 30px;
+	background-image: url("paper.jpg");
+	border-style: double;
+}
+
+li{
+	list-style: none;
+	line-height: 2em;
+	text-align: left;
+}
+
+.header{
+	background-color: yellow;
+	border-bottom:#ccc 3px solid;
+	padding: 10px;
+}
+
+.container{
+	width: 1000px;
+	margin: 100px auto;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: green;
+}

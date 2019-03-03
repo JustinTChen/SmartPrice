@@ -78,9 +78,9 @@ def calculate(search_term, category, condition):
     plt.savefig(figfile, format='png')
     figfile.seek(0)  # rewind to beginning of file
     import base64
-    figdata_png = base64.b64encode(figfile.getvalue())
+    graph = base64.b64encode(open('dist.png', 'rb').read()).decode('utf-8').replace('\n', '')
     ###########################################################################
     "*** RETURN DICT OF IMPORTANT INFO ***"
     ###########################################################################
     low, high = min(summary[1], summary[5]), max(summary[1], summary[5])
-    return {'Mean':summary[1], 'SD':summary[2], '25%':summary[4], '50%':summary[5], '75%':summary[6], 'Min':low, 'Max':high, 'Graph':figdata_png}
+    return {'Mean':summary[1], 'SD':summary[2], '25%':summary[4], '50%':summary[5], '75%':summary[6], 'Min':low, 'Max':high, 'Graph':graph}
