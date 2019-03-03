@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Table Style</title>
+	<link rel = "stylesheet" href="style2.css" />
+	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+</head>
+
+<body>
+<div class="table-title">
+	<h3>SMART PRICE!</h3>
+</div>
+<div class = row>
+<div class = "graph">
+	<img src = {{image}} height = 320, width = 320>
+</div>
+<table class="table-fill">
+<tbody class="table-hover">
+<tr>
+	<td class="text-left">MEAN</td>
+	<td class="text-left">{{mean}}</td>
+</tr>
+<tr>
+	<td class="text-left">Standard Deviation</td>
+	<td class="text-left">{{SD}} </td>
+</tr>
+<tr>
+	<td class="text-left">25th Percentile</td>
+	<td class="text-left">{{quarter}} </td>
+</tr>
+<tr>
+	<td class="text-left">50th Percentile</td>
+	<td class="text-left">{{half}}</td>
+</tr>
+<tr>
+	<td class="text-left">75th Percentile</td>
+	<td class="text-left">{{threequarters}} </td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<p class = "statement" >Your suggested listing price:</p>
+<p class = "price">{{min}}-{{max}} </p>
+
+</body>
