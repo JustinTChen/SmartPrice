@@ -41,6 +41,7 @@ def calculate(search_term, category, condition):
 
     ###########################################################################
     "*** CLEANS UP .JSON TO PANDAS DATAFRAME ***"
+    ###########################################################################
     apiResult = requests.get(url)
     listings, prices, offer, BIN = [], [], [], []
     parsed = apiResult.json()
