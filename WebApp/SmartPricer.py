@@ -18,7 +18,7 @@ class searchForm(FlaskForm):
     item = StringField('Item', validators=[DataRequired()])
     categories = SelectField('Categories', choices=cats_tuples)
     condition = SelectField('Condition', choices=[('New', 'New'), ('Used', "Used")])
-    submit = SubmitField('submit')
+    submit = SubmitField('Price My Item!')
 
 
 

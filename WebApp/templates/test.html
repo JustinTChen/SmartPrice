@@ -3,34 +3,36 @@
 <html>
 <head>
 	<title>Smart Price</title>
-	<link rel = "stylesheet" href="style.css" />
+	<link rel = "stylesheet" href="static/css/style.css" />
 	<script type="/script.js"></script>
 </head>
 <body>
 <div class "header">
 	<h1 id="heading" >Smart Price</h1>
-	<p>Price your Ebay items appropriately!</p>
 </div>
 	</div>
 
 	<form action="" method="post">
-
-		{{form.hidden_tag()}}
-
 	  <p>
-	    {{ form.item.label}}<br>
+			{{form.hidden_tag()}}
+
+	    {{ form.item.label }}<br>
 	    {{ form.item(size=32) }}
 	  </p>
+	</div>
+	<div class = "category">
 		<p>
 			{{ form.categories.label }}<br>
 			{{ form.categories(size=1) }}
 		</p>
-
+	</div>
+	<div class = "condition">
 		<p>
 			{{ form.condition.label }}<br>
 			{{ form.condition(size=1) }}
 		</p>
-
+	</div>
+	<div class = "button">
 			<p>{{ form.submit() }}</p>
 	</form>
 
@@ -38,4 +40,3 @@
 
 
 </body>
-</html>

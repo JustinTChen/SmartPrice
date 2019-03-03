@@ -1,0 +1,27 @@
+body{
+	text-align: center;
+	font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+	font-size: 30px;
+	background-image: url("hexagon.jpg");
+}
+
+li{
+	list-style: none;
+	line-height: 2em;
+	text-align: center;
+}
+
+.header{
+	border-bottom:#ccc 3px solid;
+	padding: 10px;
+
+}
+
+.container{
+	width: 1000px;
+	margin: 100px auto;
+}
+
+.button:hover {
+  background-color: green;
+}
