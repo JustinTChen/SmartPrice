@@ -31,13 +31,14 @@ div.table-title {
 }
 
 .graph {
+  border: 1px solid #021a40;
   position: absolute;
   bottom: auto;
   right: auto;
   top: 120;
-  left: 211;
-  width: 450px;
-  height: 450px;
+  left: 110;
+  width: 400px;
+  height: 320px;
 
 }
 
@@ -45,7 +46,7 @@ div.table-title {
   border:1px solid #021a40;
   position: absolute;
   bottom: auto;
-  right: 210;
+  right: 110;
   top: 120;
   left: auto;
   background: white;
