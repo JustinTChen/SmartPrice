@@ -79,4 +79,5 @@ def calculate(search_term, category, condition):
     ###########################################################################
     "*** RETURN DICT OF IMPORTANT INFO ***"
     ###########################################################################
-    return {'Mean':summary[1], 'SD':summary[2], '25%':summary[4], '50%':summary[5], '75%':summary[6], 'Graph':1}
+    low, high = min(summary[1], summary[5]), max(summary[1], summary[5])
+    return {'Mean':summary[1], 'SD':summary[2], '25%':summary[4], '50%':summary[5], '75%':summary[6], 'Min':low, 'Max':high 'Graph':1}
