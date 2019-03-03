@@ -9,13 +9,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-file_metadata = {'name': 'photo.jpg'}
-media = MediaFileUpload('files/photo.jpg',
-                        mimetype='image/jpeg')
-file = drive_service.files().create(body=file_metadata,
-                                    media_body=media,
-                                    fields='id').execute()
-print 'File ID: %s' % file.get('id')
+from GoogleUpload import *
 
 #get_ipython().run_line_magic('matplotlib', 'inline')
 plt.style.use('fivethirtyeight')
@@ -29,12 +23,21 @@ def findID(category):
     cats = Table().read_table("categories.csv")
     return cats.where('Category', category).column('#').item(0)
 
+##############################################################################
+"*** RETURNS Condition Integer FROM USER Condition String ***"
+##############################################################################
+def findCondition(condition):
+    if condition == "New":
+        return 1000
+    return 3000
+
 def calculate(search_term, category, condition):
     ##########################################################################
     "*** API ***"
     ##########################################################################
     key = 'JustinCh-SmartPri-PRD-416e5579d-aa266db1'
     category = findID(category)
+    condition = findCondition(condition)
     url = ("http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findCompletedItems&SERVICE-VERSION=1.7.0&SECURITY-APPNAME=JustinCh-SmartPri-PRD-416e5579d-aa266db1&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" + search_term + "&categoryId=" + str(category) + "&itemFilter(0).name=Condition&itemFilter(0).value=" + str(condition) + "&itemFilter(1).name=FreeShippingOnly&itemFilter(1).value=false&itemFilter(2).name=SoldItemsOnly&itemFilter(2).value=true")
 
     ###########################################################################
@@ -71,6 +74,8 @@ def calculate(search_term, category, condition):
     plt.savefig('dist.png')
 
     summary = dataTable.describe()['Price']
+
+    uploadFile('dist.png', 'dist.png', 'image/png')
     ###########################################################################
     "*** RETURN DICT OF IMPORTANT INFO ***"
     ###########################################################################
