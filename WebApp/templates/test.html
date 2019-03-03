@@ -13,10 +13,12 @@
 </div>
 	</div>
 
-	<form action="" method="post" novalidate>
+	<form action="" method="post">
+
+		{{form.hidden_tag()}}
 
 	  <p>
-	    {{ form.item.label }}<br>
+	    {{ form.item.label}}<br>
 	    {{ form.item(size=32) }}
 	  </p>
 		<p>
@@ -29,7 +31,7 @@
 			{{ form.condition(size=1) }}
 		</p>
 
-			<p>{{ form.button() }}</p>
+			<p>{{ form.submit() }}</p>
 	</form>
 
 	<br />
