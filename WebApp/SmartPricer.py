@@ -7,10 +7,8 @@ from eBay import *
 from datascience import *
 import numpy as np
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'flask-is-hard'
-
 
 class searchForm(FlaskForm):
     cats = list(Table().read_table('categories.csv').column('Category'))
@@ -19,8 +17,6 @@ class searchForm(FlaskForm):
     categories = SelectField('Categories', choices=cats_tuples)
     condition = SelectField('Condition', choices=[('New', 'New'), ('Used', "Used")])
     submit = SubmitField('Price My Item!')
-
-
 
 @app.route("/", methods=['GET', 'POST'])
 def Home():

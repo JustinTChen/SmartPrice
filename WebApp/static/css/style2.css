@@ -31,14 +31,13 @@ div.table-title {
 }
 
 .graph {
-  border:1px solid #021a40;
   position: absolute;
   bottom: auto;
   right: auto;
   top: 120;
-  left: 130;
-  width: 320px;
-  height: 320px;
+  left: 211;
+  width: 450px;
+  height: 450px;
 
 }
 
@@ -46,7 +45,7 @@ div.table-title {
   border:1px solid #021a40;
   position: absolute;
   bottom: auto;
-  right: 50;
+  right: 210;
   top: 120;
   left: auto;
   background: white;
@@ -130,26 +129,26 @@ td.text-right {
 
 .statement {
   position: absolute;
-  left: 400;
+  left: 650;
   bottom: 100;
   color: #4E5066;
   font-size: 40px;
   font-weight: 400;
   font-style:normal;
-  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
 .price {
   position: absolute;
-  left: 500;
+  left: 650;
   bottom: 20;
   color: #15b06c;
   font-size: 50px;
   font-weight: 400;
   font-style:normal;
-  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
